@@ -1,0 +1,198 @@
+{
+    "name": "GCLog4jTheme", 
+    "settings": [
+        {
+            "settings": {
+                "background": "#202020", 
+                "caret": "#AEAFAD", 
+                "foreground": "#F1F2F3", 
+                "invisibles": "#4B4E55", 
+                "lineHighlight": "#282A2E", 
+                "selection": "#4F6164"
+            }
+        }, 
+        {
+            "name": "Log4j TRACE", 
+            "scope": "entity.trace.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FFFFFF"
+            }
+        }, 
+        {
+            "name": "Log4j TRACE message", 
+            "scope": "entity.trace.message.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#C0C0C0"
+            }
+        }, 
+        {
+            "name": "Log4j DEBUG", 
+            "scope": "entity.debug.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FF9900"
+            }
+        }, 
+        {
+            "name": "Log4j DEBUG message", 
+            "scope": "entity.debug.message.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#996600"
+            }
+        }, 
+        {
+            "name": "Log4j INFO", 
+            "scope": "entity.info.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#00FF00"
+            }
+        }, 
+        {
+            "name": "Log4j INFO message", 
+            "scope": "entity.info.message.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#339900"
+            }
+        }, 
+        {
+            "name": "Log4j WARN", 
+            "scope": "entity.warn.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FFFF00"
+            }
+        }, 
+        {
+            "name": "Log4j WARN message", 
+            "scope": "entity.warn.message.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FFCC00"
+            }
+        }, 
+        {
+            "name": "Log4j ERROR", 
+            "scope": "entity.error.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FF0000"
+            }
+        }, 
+        {
+            "name": "Log4j ERROR message", 
+            "scope": "entity.error.message.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#CC0000"
+            }
+        }, 
+        {
+            "name": "Log4j FATAL", 
+            "scope": "entity.fatal.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FF00FF"
+            }
+        }, 
+        {
+            "name": "Log4j FATAL message", 
+            "scope": "entity.fatal.message.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#CC66FF"
+            }
+        }, 
+        {
+            "name": "Log4j category", 
+            "scope": "entity.category.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#C0C0C0"
+            }
+        }, 
+        {
+            "name": "Log4j control", 
+            "scope": "control.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#C0C0C0"
+            }
+        },
+        {
+            "name": "Log4j timestamp", 
+            "scope": "entity.timestamp.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#7B3347"
+            }
+        },
+        {
+            "name": "Log4j thread0", 
+            "scope": "entity.thread0.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FFD2D2",
+                "background": "#552B00"
+            }
+        },
+        {
+            "name": "Log4j thread1", 
+            "scope": "entity.thread1.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FFFF80",
+                "background": "#2C2C16"
+            }
+        },
+        {
+            "name": "Log4j thread2", 
+            "scope": "entity.thread2.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#80FF80",
+                "background": "#202F2C"
+            }
+        },
+        {
+            "name": "Log4j thread3", 
+            "scope": "entity.thread3.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#80FFFF",
+                "background": "#202F2C"
+            }
+        },
+        {
+            "name": "Log4j thread4", 
+            "scope": "entity.thread4.log4j", 
+            "settings": {
+                "fontStyle": "", 
+                "foreground": "#FF80C0"
+            }
+        },
+        {
+            "name": "Log4j ignore",
+            "scope": "entity.ignore.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#5C5C5C"
+            }
+ 
+        },
+        {
+            "name": "Log4j sql color",
+            "scope": "keyword.other.DML.sql",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#5C5C5C"
+            }
+ 
+        }
+    ], 
+    "uuid": "F96223EB-1AAB-4617-92F3-FA4D4F13DB09"
+}
