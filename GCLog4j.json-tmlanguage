@@ -1,0 +1,157 @@
+{ "name": "GCLog4j",
+        "scopeName": "text.GCLog4j",
+	"fileTypes": ["log"],
+	"patterns": [
+			{ "include": "#debug" },
+			{ "include": "#info" },
+			{ "include": "#error" },
+			{ "include": "#warn" }
+	],
+	"repository": {
+		"debug":{
+			"patterns":[
+				{ 
+				  	"name": "entity.ignore.log4j",
+				  	"begin": "^DEBUG",
+				  	"end": "\\n",
+				  	"patterns": [
+				  		{ "include": "#common" }
+				  	]
+				}
+			]
+		},
+ 
+		"info":{
+			"patterns": [
+				{ "name": "entity.ignore.log4j",
+				  "begin": "^INFO",
+				  "end": "\\n",
+				  "patterns": [
+				  		{ "include": "#common" }
+				  	]
+				}
+			]
+		},
+ 
+		"error":{
+			"patterns": [
+				{ "name": "entity.error.log4j",
+				  "begin": "^ERROR",
+				  "end": "\\n",
+				  "patterns": [
+				  		{ "include": "#common" }
+				  	]
+				}
+			]
+		},
+		"warn":{
+			"patterns": [
+				{ "name": "entity.warn.log4j",
+				  "begin": "^WARN",
+				  "end": "\\n",
+				  "patterns": [
+				  		{ "include": "#common" }
+				  	]
+				}
+			]
+		},
+		"common":{
+			"patterns": [
+				{ "include": "#timestamp" },
+				{ "include": "#threads" },
+				{ "include": "#sql" },
+				{ "include": "#processresource" }
+			]
+			
+		},
+		"threads":{
+			"patterns": [
+				{ "include": "#thread0" },
+				{ "include": "#thread1" },
+				{ "include": "#thread2" },
+				{ "include": "#thread3" },
+				{ "include": "#thread4" }
+			]
+		},
+		"timestamp":{
+			"patterns":[
+				{  "name": "entity.timestamp.log4j",
+				   "match": "\\d{4}-\\d{2}-\\d{2}.\\d{2}:\\d{2}:\\d{2},\\d{3}"
+				}
+			]
+		},
+ 
+ 
+		"thread0":{
+			"patterns": [
+				{  "name": "entity.thread0.log4j",
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.0(?=\\])"
+				}
+			]
+		},
+		"thread1":{
+			"patterns": [
+				{  "name": "entity.thread1.log4j",
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.1(?=\\])"
+				}
+			]
+		},
+		"thread2":{
+			"patterns": [
+				{  "name": "entity.thread2.log4j",
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.2(?=\\])"
+				}
+			]
+		},
+		"thread3":{
+			"patterns": [
+				{  "name": "entity.thread3.log4j",
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.3(?=\\])"
+				}
+			]
+		},
+		"thread4":{
+			"patterns": [
+				{  "name": "entity.thread4.log4j",
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.4(?=\\])"
+				}
+			]
+		},
+		"sql":{
+			"patterns": [
+				{ "name": "entity.text.params.log4j",
+				  "begin": "(?<=Creating.PreparedStatement.for)",
+				  "end": "\\n",
+				  "patterns": [
+				  		{  "name": "entity.thread4.log4j",
+				  		   "match": "\\b(select(\\s+distinct)?|insert\\s+(ignore\\s+)?into|update|delete|from|set|where|group\\sby|or|like|and|union(\\s+all)?|having|order\\sby|limit|(inner|cross)\\s+join|straight_join|(left|right)(\\s+outer)?\\s+join|natural(\\s+(left|right)(\\s+outer)?)?\\s+join)\\b"
+				  		}
+				  ]
+				}
+			]
+		},
+		"processresource":{
+			"patterns": [
+				{ "name": "entity.thread4.log4j",
+				  "begin": "ProcessResource\\[",
+				  "end": "(\\]\\n)|(\\n)",
+				  "patterns": [
+				  		{ "include": "#equal" }
+				  ]
+				}
+			]
+		},
+		"equal":{
+			"patterns": [
+				{  "name": "entity.fatal.log4j",
+				   "match": "(\\b\\w+)(\\=)(\\w+\\b)",
+				   "captures": {
+				       "0": { "name": "keywords.equal" },
+				       "1":	{ "name":"entity.thread4.log4j"}
+				   }
+				}
+			]
+		}
+	},
+	"uuid": "59d2eab0-506c-4c33-8e2f-a6a74820383a"
+}
