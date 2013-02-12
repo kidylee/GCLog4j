@@ -60,7 +60,10 @@
 				{ "include": "#timestamp" },
 				{ "include": "#threads" },
 				{ "include": "#sql" },
-				{ "include": "#processresource" }
+				{ "include": "#task" },
+				{ "include": "#usecastxn" },
+				{ "include": "#usecaselog" },
+				{ "include": "#reference" }
 			]
 			
 		},
@@ -119,24 +122,43 @@
 		},
 		"sql":{
 			"patterns": [
-				{ "name": "entity.text.params.log4j",
+				{ "name": "entity.text.log4j",
 				  "begin": "(?<=Creating.PreparedStatement.for)",
 				  "end": "\\n",
 				  "patterns": [
 				  		{  "name": "entity.thread4.log4j",
-				  		   "match": "\\b(select(\\s+distinct)?|insert\\s+(ignore\\s+)?into|update|delete|from|set|where|group\\sby|or|like|and|union(\\s+all)?|having|order\\sby|limit|(inner|cross)\\s+join|straight_join|(left|right)(\\s+outer)?\\s+join|natural(\\s+(left|right)(\\s+outer)?)?\\s+join)\\b"
+				  		   "match": "(?i)\\b(select(\\s+distinct)?|insert\\s+(ignore\\s+)?into|update|delete|from|set|where|group\\sby|or|like|and|union(\\s+all)?|having|order\\sby|limit|(inner|cross)\\s+join|straight_join|(left|right)(\\s+outer)?\\s+join|natural(\\s+(left|right)(\\s+outer)?)?\\s+join)\\b"
 				  		}
 				  ]
 				}
 			]
 		},
-		"processresource":{
+		"task":{
 			"patterns": [
 				{ "name": "entity.thread4.log4j",
-				  "begin": "ProcessResource\\[",
-				  "end": "(\\]\\n)|(\\n)",
+				  "begin": "(?<=receives.a.message.CoreMessage)",
+				  "end": "\\]",
 				  "patterns": [
-				  		{ "include": "#equal" }
+				  		{ "name": "entity.fatal.log4j",
+				  		  "begin": "(?<=request=)",
+				  		  "end": "(?=\\])",
+				  		  "patterns": [
+				  		  		{ "include": "xml" } 
+				  		  ]
+				  		}
+				  ]
+				},
+				{ "name": "entity.thread4.log4j",
+				  "begin": "(?<=Forwarding message CoreMessage)",
+				  "end": "\\]",
+				  "patterns": [
+				  		{ "name": "entity.fatal.log4j",
+				  		  "begin": "(?<=request=)",
+				  		  "end": "(?=\\])",
+				  		  "patterns": [
+				  		  		{ "include": "xml" } 
+				  		  ]
+				  		}
 				  ]
 				}
 			]
@@ -146,9 +168,46 @@
 				{  "name": "entity.fatal.log4j",
 				   "match": "(\\b\\w+)(\\=)(\\w+\\b)",
 				   "captures": {
-				       "0": { "name": "keywords.equal" },
-				       "1":	{ "name":"entity.thread4.log4j"}
+				       "1": { "name": "keywords.equal" },
+				       "2":	{ "name":"entity.ignore.log4j"},
+				       "3":	{ "name":"entity.ignore.log4j"}
 				   }
+				}
+			]
+		},
+		"usecastxn":{
+			"patterns": [
+				{ "name": "entity.thread4.log4j",
+				  "begin": "UseCaseTxnucTxnId=",
+				  "end": "\\n",
+				  "patterns": [
+				  		{ "include": "#equal" },
+				  		{ "include": "#stage" }
+				  ]
+				}
+			]
+		},
+		"stage":{
+			"patterns": [
+				{  "name": "entity.fatal.log4j",
+				   "match": "(stage)(.+)$"
+				   
+				}
+			]
+		},
+		"usecaselog":{
+			"patterns": [
+				{ "name": "entity.fatal.log4j",
+				  "begin": "\\[[a-zA-Z]{3}\\d{2}\\]",
+				  "end": "\\n"
+				}
+			]
+		},
+		"reference":{
+			"patterns": [
+				{ "name": "entity.fatal.log4j",
+				  "begin": "(getReference.+)|(populate) \\-",
+				  "end": "\\n"
 				}
 			]
 		}

@@ -47,7 +47,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#processresource</string>
+					<string>#task</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#usecastxn</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#usecaselog</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#reference</string>
 				</dict>
 			</array>
 		</dict>
@@ -79,15 +91,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>0</key>
+						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keywords.equal</string>
 						</dict>
-						<key>1</key>
+						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.thread4.log4j</string>
+							<string>entity.ignore.log4j</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.ignore.log4j</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -139,24 +156,17 @@
 				</dict>
 			</array>
 		</dict>
-		<key>processresource</key>
+		<key>reference</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>ProcessResource\[</string>
+					<string>(getReference.+)|(populate) \-</string>
 					<key>end</key>
-					<string>(\]\n)|(\n)</string>
+					<string>\n</string>
 					<key>name</key>
-					<string>entity.thread4.log4j</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#equal</string>
-						</dict>
-					</array>
+					<string>entity.fatal.log4j</string>
 				</dict>
 			</array>
 		</dict>
@@ -170,14 +180,84 @@
 					<key>end</key>
 					<string>\n</string>
 					<key>name</key>
-					<string>entity.text.params.log4j</string>
+					<string>entity.text.log4j</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
-							<string>\b(select(\s+distinct)?|insert\s+(ignore\s+)?into|update|delete|from|set|where|group\sby|or|like|and|union(\s+all)?|having|order\sby|limit|(inner|cross)\s+join|straight_join|(left|right)(\s+outer)?\s+join|natural(\s+(left|right)(\s+outer)?)?\s+join)\b</string>
+							<string>(?i)\b(select(\s+distinct)?|insert\s+(ignore\s+)?into|update|delete|from|set|where|group\sby|or|like|and|union(\s+all)?|having|order\sby|limit|(inner|cross)\s+join|straight_join|(left|right)(\s+outer)?\s+join|natural(\s+(left|right)(\s+outer)?)?\s+join)\b</string>
 							<key>name</key>
 							<string>entity.thread4.log4j</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>stage</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(stage)(.+)$</string>
+					<key>name</key>
+					<string>entity.fatal.log4j</string>
+				</dict>
+			</array>
+		</dict>
+		<key>task</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=receives.a.message.CoreMessage)</string>
+					<key>end</key>
+					<string>\]</string>
+					<key>name</key>
+					<string>entity.thread4.log4j</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?&lt;=request=)</string>
+							<key>end</key>
+							<string>(?=\])</string>
+							<key>name</key>
+							<string>entity.fatal.log4j</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>xml</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=Forwarding message CoreMessage)</string>
+					<key>end</key>
+					<string>\]</string>
+					<key>name</key>
+					<string>entity.thread4.log4j</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?&lt;=request=)</string>
+							<key>end</key>
+							<string>(?=\])</string>
+							<key>name</key>
+							<string>entity.fatal.log4j</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>xml</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -278,6 +358,45 @@
 					<string>\d{4}-\d{2}-\d{2}.\d{2}:\d{2}:\d{2},\d{3}</string>
 					<key>name</key>
 					<string>entity.timestamp.log4j</string>
+				</dict>
+			</array>
+		</dict>
+		<key>usecaselog</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\[[a-zA-Z]{3}\d{2}\]</string>
+					<key>end</key>
+					<string>\n</string>
+					<key>name</key>
+					<string>entity.fatal.log4j</string>
+				</dict>
+			</array>
+		</dict>
+		<key>usecastxn</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>UseCaseTxnucTxnId=</string>
+					<key>end</key>
+					<string>\n</string>
+					<key>name</key>
+					<string>entity.thread4.log4j</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#equal</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#stage</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
