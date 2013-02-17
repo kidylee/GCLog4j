@@ -2,6 +2,7 @@
         "scopeName": "text.GCLog4j",
 	"fileTypes": ["log"],
 	"patterns": [
+
 			{ "include": "#debug" },
 			{ "include": "#info" },
 			{ "include": "#error" },
@@ -57,6 +58,7 @@
 		},
 		"common":{
 			"patterns": [
+				{ "include": "#equal" },
 				{ "include": "#timestamp" },
 				{ "include": "#threads" },
 				{ "include": "#sql" },
@@ -126,38 +128,40 @@
 				  "begin": "(?<=Creating.PreparedStatement.for)",
 				  "end": "\\n",
 				  "patterns": [
-				  		{  "name": "entity.thread4.log4j",
+				  		{  "name": "keyword.other.DML.sql",
 				  		   "match": "(?i)\\b(select(\\s+distinct)?|insert\\s+(ignore\\s+)?into|update|delete|from|set|where|group\\sby|or|like|and|union(\\s+all)?|having|order\\sby|limit|(inner|cross)\\s+join|straight_join|(left|right)(\\s+outer)?\\s+join|natural(\\s+(left|right)(\\s+outer)?)?\\s+join)\\b"
-				  		}
+				  		},
+				  		{ "include": "#equal" }
 				  ]
 				}
 			]
 		},
 		"task":{
 			"patterns": [
-				{ "name": "entity.thread4.log4j",
+				{ "name": "entity.task.log4j",
 				  "begin": "(?<=receives.a.message.CoreMessage)",
 				  "end": "\\]",
 				  "patterns": [
-				  		{ "name": "entity.fatal.log4j",
+				  		{ "name": "entity.xml.log4j",
 				  		  "begin": "(?<=request=)",
 				  		  "end": "(?=\\])",
 				  		  "patterns": [
-				  		  		{ "include": "xml" } 
+				  		  		{ "include": "#xml" } 
 				  		  ]
 				  		}
 				  ]
 				},
-				{ "name": "entity.thread4.log4j",
+				{ "name": "entity.task.log4j",
 				  "begin": "(?<=Forwarding message CoreMessage)",
 				  "end": "\\]",
 				  "patterns": [
-				  		{ "name": "entity.fatal.log4j",
+				  		{ "name": "entity.xml.log4j",
 				  		  "begin": "(?<=request=)",
 				  		  "end": "(?=\\])",
 				  		  "patterns": [
-				  		  		{ "include": "xml" } 
+				  		  		{ "include": "#xml" } 
 				  		  ]
+				  		  
 				  		}
 				  ]
 				}
@@ -166,18 +170,19 @@
 		"equal":{
 			"patterns": [
 				{  "name": "entity.fatal.log4j",
-				   "match": "(\\b\\w+)(\\=)(\\w+\\b)",
+				   "match": "(\\w+?\\s?)(\\=)(.*?)(?=\\,|\\[|\\])",
 				   "captures": {
-				       "1": { "name": "keywords.equal" },
-				       "2":	{ "name":"entity.ignore.log4j"},
-				       "3":	{ "name":"entity.ignore.log4j"}
+				       "1": { "name": "entity.key.log4j" },
+				       "2": { "name": "entity.equal.log4j" },
+				       "3": { "name": "entity.value.log4j" }
+
 				   }
 				}
 			]
 		},
 		"usecastxn":{
 			"patterns": [
-				{ "name": "entity.thread4.log4j",
+				{ "name": "entity.text.log4j",
 				  "begin": "UseCaseTxnucTxnId=",
 				  "end": "\\n",
 				  "patterns": [
@@ -189,7 +194,7 @@
 		},
 		"stage":{
 			"patterns": [
-				{  "name": "entity.fatal.log4j",
+				{  "name": "entity.stage.log4j",
 				   "match": "(stage)(.+)$"
 				   
 				}
@@ -197,7 +202,7 @@
 		},
 		"usecaselog":{
 			"patterns": [
-				{ "name": "entity.fatal.log4j",
+				{ "name": "entity.usecase.log4j",
 				  "begin": "\\[[a-zA-Z]{3}\\d{2}\\]",
 				  "end": "\\n"
 				}
@@ -205,9 +210,19 @@
 		},
 		"reference":{
 			"patterns": [
-				{ "name": "entity.fatal.log4j",
+				{ "name": "entity.reference.log4j",
 				  "begin": "(getReference.+)|(populate) \\-",
-				  "end": "\\n"
+				  "end": "\\n",
+				  "patterns": [
+				  	{ "include": "#equal" }
+				  ]
+				}
+			]
+		},
+		"xml":{
+			"patterns": [
+				{  "name": "entity.tag.log4j",
+				   "match": "(<)(.+?)(>)"
 				}
 			]
 		}

@@ -35,6 +35,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#equal</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#timestamp</string>
 				</dict>
 				<dict>
@@ -94,21 +98,21 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keywords.equal</string>
+							<string>entity.key.log4j</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>entity.ignore.log4j</string>
+							<string>entity.equal.log4j</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.ignore.log4j</string>
+							<string>entity.value.log4j</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\b\w+)(\=)(\w+\b)</string>
+					<string>(\w+?\s?)(\=)(.*?)(?=\,|\[|\])</string>
 					<key>name</key>
 					<string>entity.fatal.log4j</string>
 				</dict>
@@ -166,7 +170,14 @@
 					<key>end</key>
 					<string>\n</string>
 					<key>name</key>
-					<string>entity.fatal.log4j</string>
+					<string>entity.reference.log4j</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#equal</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -187,7 +198,11 @@
 							<key>match</key>
 							<string>(?i)\b(select(\s+distinct)?|insert\s+(ignore\s+)?into|update|delete|from|set|where|group\sby|or|like|and|union(\s+all)?|having|order\sby|limit|(inner|cross)\s+join|straight_join|(left|right)(\s+outer)?\s+join|natural(\s+(left|right)(\s+outer)?)?\s+join)\b</string>
 							<key>name</key>
-							<string>entity.thread4.log4j</string>
+							<string>keyword.other.DML.sql</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#equal</string>
 						</dict>
 					</array>
 				</dict>
@@ -201,7 +216,7 @@
 					<key>match</key>
 					<string>(stage)(.+)$</string>
 					<key>name</key>
-					<string>entity.fatal.log4j</string>
+					<string>entity.stage.log4j</string>
 				</dict>
 			</array>
 		</dict>
@@ -215,7 +230,7 @@
 					<key>end</key>
 					<string>\]</string>
 					<key>name</key>
-					<string>entity.thread4.log4j</string>
+					<string>entity.task.log4j</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -224,12 +239,12 @@
 							<key>end</key>
 							<string>(?=\])</string>
 							<key>name</key>
-							<string>entity.fatal.log4j</string>
+							<string>entity.xml.log4j</string>
 							<key>patterns</key>
 							<array>
 								<dict>
 									<key>include</key>
-									<string>xml</string>
+									<string>#xml</string>
 								</dict>
 							</array>
 						</dict>
@@ -241,7 +256,7 @@
 					<key>end</key>
 					<string>\]</string>
 					<key>name</key>
-					<string>entity.thread4.log4j</string>
+					<string>entity.task.log4j</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -250,12 +265,12 @@
 							<key>end</key>
 							<string>(?=\])</string>
 							<key>name</key>
-							<string>entity.fatal.log4j</string>
+							<string>entity.xml.log4j</string>
 							<key>patterns</key>
 							<array>
 								<dict>
 									<key>include</key>
-									<string>xml</string>
+									<string>#xml</string>
 								</dict>
 							</array>
 						</dict>
@@ -371,7 +386,7 @@
 					<key>end</key>
 					<string>\n</string>
 					<key>name</key>
-					<string>entity.fatal.log4j</string>
+					<string>entity.usecase.log4j</string>
 				</dict>
 			</array>
 		</dict>
@@ -385,7 +400,7 @@
 					<key>end</key>
 					<string>\n</string>
 					<key>name</key>
-					<string>entity.thread4.log4j</string>
+					<string>entity.text.log4j</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -418,6 +433,18 @@
 							<string>#common</string>
 						</dict>
 					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>xml</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(&lt;)(.+?)(&gt;)</string>
+					<key>name</key>
+					<string>entity.tag.log4j</string>
 				</dict>
 			</array>
 		</dict>

@@ -314,7 +314,137 @@
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#5C5C5C</string>
+				<string>#409588</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j task color</string>
+			<key>scope</key>
+			<string>entity.task.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#9B83A5</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j xml color</string>
+			<key>scope</key>
+			<string>entity.xml.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#B7A5BE</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j text color</string>
+			<key>scope</key>
+			<string>entity.text.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#894174</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j stage color</string>
+			<key>scope</key>
+			<string>entity.stage.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#E2C2D9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j use case color</string>
+			<key>scope</key>
+			<string>entity.usecase.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#80FF00</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j reference color</string>
+			<key>scope</key>
+			<string>entity.reference.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#177479</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j key color</string>
+			<key>scope</key>
+			<string>entity.key.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#14676B</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j equal color</string>
+			<key>scope</key>
+			<string>entity.equal.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#560C36</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j value color</string>
+			<key>scope</key>
+			<string>entity.value.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#1E959B</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Log4j tag color</string>
+			<key>scope</key>
+			<string>entity.tag.log4j</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#416C76</string>
 			</dict>
 		</dict>
 	</array>

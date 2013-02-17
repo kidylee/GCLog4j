@@ -189,7 +189,97 @@
             "scope": "keyword.other.DML.sql",
             "settings": {
                 "fontStyle": "bold", 
-                "foreground": "#5C5C5C"
+                "foreground": "#409588"
+            }
+ 
+        },
+        {
+            "name": "Log4j task color",
+            "scope": "entity.task.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#9B83A5"
+            }
+ 
+        },
+        {
+            "name": "Log4j xml color",
+            "scope": "entity.xml.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#B7A5BE"
+            }
+ 
+        },
+        {
+            "name": "Log4j text color",
+            "scope": "entity.text.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#894174"
+            }
+ 
+        },
+        {
+            "name": "Log4j stage color",
+            "scope": "entity.stage.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#E2C2D9"
+            }
+ 
+        },
+        {
+            "name": "Log4j use case color",
+            "scope": "entity.usecase.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#80FF00"
+            }
+ 
+        },
+        {
+            "name": "Log4j reference color",
+            "scope": "entity.reference.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#177479"
+            }
+ 
+        },
+        {
+            "name": "Log4j key color",
+            "scope": "entity.key.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#14676B"
+            }
+ 
+        },
+        {
+            "name": "Log4j equal color",
+            "scope": "entity.equal.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#560C36"
+            }
+ 
+        },
+        {
+            "name": "Log4j value color",
+            "scope": "entity.value.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#1E959B"
+            }
+ 
+        },
+        {
+            "name": "Log4j tag color",
+            "scope": "entity.tag.log4j",
+            "settings": {
+                "fontStyle": "bold", 
+                "foreground": "#416C76"
             }
  
         }
