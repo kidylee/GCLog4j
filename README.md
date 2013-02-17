@@ -1,6 +1,6 @@
 #Log4j highlight for Sublime
 对日志进行按线程和关键类型进行高亮，方便查看。
-![截屏](https://raw.github.com/kidylee/GCLog4j/image/img/Screen.png)
+![截屏](https://raw.github.com/kidylee/GCLog4j/img/img/Screen.png)
 ##安装
 所有文件放置在目录中即可，安装后可能需要重启Sublime。 
 ```
