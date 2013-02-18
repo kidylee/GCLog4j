@@ -13,7 +13,7 @@ C:\Documents and Settings\$user\Application Data\Sublime Text 2\Packages\GCLog4j
 + Highlight all content which begin with [$USE_CASE_NAME].
 
 ##FAQ:
-1. Open the log file but no hightlight:
+1. Open the log file but no highlight:
  ```CTRL```+```SHIFT```+```P``` ```gclog``` ```Enter```.
 
-2. Coloration incorrect: Copy ```GCLog4j.sublime-settings``` to User directory which is under the Pachages and restart the sublime.
+2. Coloration incorrect: Copy ```GCLog4j.sublime-settings``` to User directory which is under the Packages and restart the sublime.
