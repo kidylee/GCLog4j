@@ -90,35 +90,35 @@
 		"thread0":{
 			"patterns": [
 				{  "name": "entity.thread0.log4j",
-				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.0(?=\\])"
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\\\d?.listener\\.0(?=\\])"
 				}
 			]
 		},
 		"thread1":{
 			"patterns": [
 				{  "name": "entity.thread1.log4j",
-				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.1(?=\\])"
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\\\d?.listener\\.1(?=\\])"
 				}
 			]
 		},
 		"thread2":{
 			"patterns": [
 				{  "name": "entity.thread2.log4j",
-				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.2(?=\\])"
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\\\d?.listener\\.2(?=\\])"
 				}
 			]
 		},
 		"thread3":{
 			"patterns": [
 				{  "name": "entity.thread3.log4j",
-				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.3(?=\\])"
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\\\d?.listener\\.3(?=\\])"
 				}
 			]
 		},
 		"thread4":{
 			"patterns": [
 				{  "name": "entity.thread4.log4j",
-				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\.listener\\.4(?=\\])"
+				   "match": "(?<=\\[)remediationQueueEndpoint\\d\\\\d?.listener\\.4(?=\\])"
 				}
 			]
 		},
